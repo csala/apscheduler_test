@@ -19,11 +19,11 @@ def add_jobs(scheduler, config):
         scheduler.add_job(task, trigger, **kwargs)
 
 
-def start():
+def start(config_path):
     scheduler = GeventScheduler()
 
     config = configparser.ConfigParser()
-    config.read('scheduler.conf')
+    config.read(config_path)
 
     add_jobs(scheduler, config['jobs'])
 
